@@ -1,0 +1,71 @@
+{
+  "name": "awesome-claude",
+  "version": "0.0.1",
+  "description": "CLI tool to install and manage awesome Claude configurations",
+  "main": "index.js",
+  "type": "module",
+  "bin": {
+    "awesome-claude": "./bin/awesome-claude.js"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js",
+    "test": "node --test",
+    "lint": "eslint . --ext .js,.mjs",
+    "lint:fix": "eslint . --ext .js,.mjs --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "docs": "jsdoc -c jsdoc.conf.json",
+    "clean": "rm -rf node_modules dist coverage",
+    "prepare": "husky install",
+    "preversion": "npm run lint && npm run test",
+    "version": "npm run format && git add -A",
+    "postversion": "git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AungMyoKyaw/awesome-claude.git"
+  },
+  "keywords": [
+    "claude",
+    "ai",
+    "anthropic",
+    "llm",
+    "cli",
+    "configuration",
+    "setup",
+    "automation",
+    "tools",
+    "installer"
+  ],
+  "author": "Aung Myo Kyaw <aungmyokyaw@example.com>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "bugs": {
+    "url": "https://github.com/AungMyoKyaw/awesome-claude/issues"
+  },
+  "homepage": "https://github.com/AungMyoKyaw/awesome-claude#readme",
+  "files": [
+    "src/",
+    "docs/",
+    "README.md",
+    "LICENSE"
+  ],
+  "config": {
+    "port": 3000
+  },
+  "devDependencies": {
+    "eslint": "^8.0.0",
+    "prettier": "^3.0.0",
+    "husky": "^8.0.0"
+  },
+  "dependencies": {
+    "@inquirer/prompts": "^5.0.0",
+    "chalk": "^5.3.0",
+    "fs-extra": "^11.1.1",
+    "ora": "^7.0.1"
+  }
+}
