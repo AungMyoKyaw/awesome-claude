@@ -38,7 +38,7 @@
     "tools",
     "installer"
   ],
-  "author": "Aung Myo Kyaw <aungmyokyaw@example.com>",
+  "author": "Aung Myo Kyaw",
   "license": "MIT",
   "engines": {
     "node": ">=18.0.0",
