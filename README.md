@@ -30,6 +30,12 @@ npm install -g awesome-claude
 awesome-claude
 ```
 
+### Use with npx (No Installation Required)
+
+```bash
+npx awesome-claude
+```
+
 Follow the interactive prompts to:
 
 1. Choose your installation location
@@ -42,23 +48,22 @@ The tool supports multiple installation locations based on your operating system
 
 ### macOS
 
-- User Home Directory (`~/.claude`)
-- Application Support (`~/Library/Application Support/Claude`)
-- Custom path
+- Current Working Directory (`./claude`) - Available
+- User Home Directory (`~/.claude`) - Currently disabled
 
 ### Windows
 
-- User Home Directory (`~/.claude`)
-- AppData Local (`~/AppData/Local/Claude`)
-- AppData Roaming (`~/AppData/Roaming/Claude`)
-- Custom path
+- Current Working Directory (`./claude`) - Available
+- User Home Directory (`~/.claude`) - Currently disabled
 
 ### Linux
 
-- User Home Directory (`~/.claude`)
-- Config Directory (`~/.config/claude`)
-- Local Share (`~/.local/share/claude`)
-- Custom path
+- Current Working Directory (`./claude`) - Available
+- User Home Directory (`~/.claude`) - Currently disabled
+
+### Custom Path
+
+You can also specify a custom installation path during the setup process.
 
 ## 📁 Configuration Files
 
@@ -66,14 +71,30 @@ The tool installs various configuration files and directories:
 
 ### Required Files
 
-- **CLAUDE.md**: Main Claude configuration with transcendent AI instructions
+- **CLAUDE.md**: Main Claude configuration with AI instructions
 - **.claudeignore**: Ignore patterns for Claude operations
 
 ### Optional Directories
 
-- **prompts/**: Custom prompt templates (includes code review prompt)
-- **templates/**: Project templates (includes README template)
-- **examples/**: Example configurations and code snippets
+- **prompts/**: Custom prompt templates
+- **templates/**: Project templates
+- **examples/**: Example configurations
+
+### Configuration Commands
+
+The tool also includes a comprehensive set of slash commands for various development tasks:
+
+- **AI Enhancement Commands**: `/ai-enhancement:unleash`, `/ai-enhancement:godmode`, etc.
+- **Architecture Commands**: `/architecture:architecture`, `/architecture:schema`, etc.
+- **Development Commands**: `/development:engineer`, `/development:refactor`, etc.
+- **Git Commands**: `/git:commit`, `/git:az-pr`, `/git:branch-diff`, etc.
+- **Quality Commands**: `/quality:linting`, `/quality:format`, `/quality:review`, etc.
+- **Security Commands**: `/security:security-audit`, `/security:security-review`, etc.
+- **Testing Commands**: `/testing:test`
+- **Documentation Commands**: `/docs:docs`
+- **Deployment Commands**: `/deployment:deploy`
+- **Performance Commands**: `/performance:performance`
+- **Workflow Commands**: `/workflow:complete-workflow`
 
 ## 🛠️ Development
 
@@ -108,25 +129,41 @@ node bin/awesome-claude.js
 - `npm run lint:fix` - Fix ESLint issues automatically
 - `npm run format` - Format code with Prettier
 - `npm run format:check` - Check code formatting
+- `npm run docs` - Generate documentation
 - `npm run clean` - Clean build artifacts and dependencies
+- `npm run prepare` - Set up git hooks
+- `npm run preversion` - Run checks before versioning
+- `npm run version` - Format and stage changes for version
+- `npm run postversion` - Push changes and tags
 
 ### Project Structure
 
 ```
 awesome-claude/
-├── bin/                    # CLI executable
-│   └── awesome-claude.js   # Main CLI entry point
-├── src/                    # Source code
-│   └── cli.js             # CLI module with interactive setup
-├── config/                # Configuration templates
-│   ├── CLAUDE.md          # Main configuration file
-│   ├── .claudeignore      # Ignore patterns
-│   ├── prompts/           # Custom prompts
-│   ├── templates/         # Project templates
-│   └── examples/          # Example configurations
-├── index.js               # Legacy entry point
-├── package.json           # Package configuration
-└── README.md              # This file
+├── bin/                          # CLI executable
+│   └── awesome-claude.js         # Main CLI entry point
+├── src/                          # Source code
+│   └── cli.js                   # CLI module with interactive setup
+├── config/                       # Configuration templates
+│   ├── CLAUDE.md                 # Main configuration file
+│   ├── commands/                 # Slash command definitions
+│   │   ├── ai-enhancement/       # AI enhancement commands
+│   │   ├── architecture/         # Architecture commands
+│   │   ├── development/          # Development commands
+│   │   ├── docs/                 # Documentation commands
+│   │   ├── git/                  # Git workflow commands
+│   │   ├── performance/          # Performance commands
+│   │   ├── quality/              # Code quality commands
+│   │   ├── security/             # Security commands
+│   │   ├── testing/              # Testing commands
+│   │   ├── deployment/           # Deployment commands
+│   │   └── workflow/             # Workflow commands
+│   ├── prompts/                  # Custom prompt templates
+│   ├── templates/                # Project templates
+│   └── examples/                 # Example configurations
+├── index.js                      # Main entry point
+├── package.json                  # Package configuration
+└── README.md                     # This file
 ```
 
 ## 🎯 Usage Examples
@@ -134,22 +171,22 @@ awesome-claude/
 ### Basic Setup
 
 ```bash
-# Install globally
+# Option 1: Install globally
 npm install -g awesome-claude
-
-# Run interactive setup
 awesome-claude
+
+# Option 2: Use with npx (no installation required)
+npx awesome-claude
 ```
 
 ### Custom Installation Path
 
-During setup, choose "Custom Path" and specify your preferred location:
+During setup, you can specify a custom installation path when prompted:
 
 ```
 ? Select installation location:
-❯ User Home Directory (/Users/username/.claude)
-  Application Support (/Users/username/Library/Application Support/Claude)
-  Custom Path
+❯ Current Working Directory: ./claude (./claude)
+  User Home Directory: ~/.claude (system) - Currently disabled
 ```
 
 ### Selective File Installation
@@ -165,16 +202,28 @@ Choose which configuration files to install:
   ◉ examples/ - Example Configurations
 ```
 
+### Using Slash Commands
+
+After installation, you can use various slash commands in your Claude environment:
+
+```bash
+/ai-enhancement:unleash [request]           # Unleash AI capabilities
+/git:commit feat: add new feature           # Smart git commits
+/quality:linting javascript --fix           # Code quality checks
+/development:refactor optimize-performance  # Code refactoring
+/testing:test --coverage                    # Generate tests
+```
+
 ## 🔧 Advanced Configuration
 
 ### Custom CLAUDE.md
 
-The installed `CLAUDE.md` contains advanced AI instructions including:
+The installed `CLAUDE.md` contains comprehensive AI instructions including:
 
-- Transcendent autonomous agent protocols
-- Infinite creativity amplification
-- Maximum resource utilization directives
-- Comprehensive operating principles
+- Work style preferences and communication guidelines
+- Transparency and reasoning protocols
+- Problem-solving methodologies
+- Integration patterns with development workflows
 
 ### Integration with Development Workflow
 
@@ -184,6 +233,18 @@ The configuration files integrate seamlessly with:
 - Git workflows (hooks and automation)
 - CI/CD pipelines
 - Documentation generators
+
+### Development Dependencies
+
+The project uses modern development tools:
+
+- **@inquirer/prompts**: Interactive command-line prompts
+- **chalk**: Terminal string styling
+- **ora**: Elegant terminal spinners
+- **fs-extra**: Enhanced file system operations
+- **ESLint**: Code linting and quality checks
+- **Prettier**: Code formatting
+- **Husky**: Git hooks management
 
 ## 🤝 Contributing
 
