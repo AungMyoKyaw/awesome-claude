@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "bin": {
-    "awesome-claude": "./bin/awesome-claude.js"
+    "awesome-claude": "bin/awesome-claude.js"
   },
   "scripts": {
     "start": "node index.js",
