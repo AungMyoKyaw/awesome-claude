@@ -1,4 +1,4 @@
-import { input, select, confirm, checkbox } from '@inquirer/prompts';
+import { select, confirm, checkbox } from '@inquirer/prompts';
 import chalk from 'chalk';
 import ora from 'ora';
 import fs from 'fs-extra';
@@ -12,36 +12,28 @@ const __dirname = path.dirname(__filename);
 // Common configuration paths
 const CONFIG_PATHS = {
   macos: [
-    { name: 'User Home Directory', path: path.join(homedir(), '.claude') },
     {
-      name: 'Application Support',
-      path: path.join(homedir(), 'Library', 'Application Support', 'Claude'),
+      name: 'User Home Directory: ~/.claude (system)',
+      path: path.join(homedir(), '.claude'),
+      disabled: true,
     },
-    { name: 'Custom Path', path: 'custom' },
+    { name: 'Current Working Directory: ./claude', path: path.join(process.cwd(), 'claude') },
   ],
   windows: [
-    { name: 'User Home Directory', path: path.join(homedir(), '.claude') },
     {
-      name: 'AppData Local',
-      path: path.join(homedir(), 'AppData', 'Local', 'Claude'),
+      name: 'User Home Directory: ~/.claude (system)',
+      path: path.join(homedir(), '.claude'),
+      disabled: true,
     },
-    {
-      name: 'AppData Roaming',
-      path: path.join(homedir(), 'AppData', 'Roaming', 'Claude'),
-    },
-    { name: 'Custom Path', path: 'custom' },
+    { name: 'Current Working Directory: ./claude', path: path.join(process.cwd(), 'claude') },
   ],
   linux: [
-    { name: 'User Home Directory', path: path.join(homedir(), '.claude') },
     {
-      name: 'Config Directory',
-      path: path.join(homedir(), '.config', 'claude'),
+      name: 'User Home Directory: ~/.claude (system)',
+      path: path.join(homedir(), '.claude'),
+      disabled: true,
     },
-    {
-      name: 'Local Share',
-      path: path.join(homedir(), '.local', 'share', 'claude'),
-    },
-    { name: 'Custom Path', path: 'custom' },
+    { name: 'Current Working Directory: ./claude', path: path.join(process.cwd(), 'claude') },
   ],
 };
 
@@ -81,20 +73,13 @@ export async function setupClaudeConfig() {
     const platform = getPlatform();
     console.log(chalk.yellow(`📍 Detected platform: ${platform}`));
 
+    console.log(chalk.gray('\n📋 Installation Options:'));
+    console.log(chalk.gray('  • User Home Directory (system) - Currently disabled'));
+    console.log(chalk.green('  • Current Working Directory: ./claude - Available\n'));
+
     const installPath = await selectInstallationPath(platform);
 
-    let targetPath;
-    if (installPath === 'custom') {
-      targetPath = await input({
-        message: 'Enter custom installation path:',
-        validate: input => {
-          if (!input.trim()) return 'Path cannot be empty';
-          return true;
-        },
-      });
-    } else {
-      targetPath = installPath;
-    }
+    const targetPath = installPath;
 
     // Step 2: Select configuration files
     console.log(chalk.yellow('\n📋 Select configuration files to install:'));
@@ -156,9 +141,12 @@ function getPlatform() {
 async function selectInstallationPath(platform) {
   const paths = CONFIG_PATHS[platform.toLowerCase()] || CONFIG_PATHS.linux;
 
+  // Filter out disabled options
+  const availablePaths = paths.filter(pathOption => !pathOption.disabled);
+
   const choice = await select({
     message: 'Select installation location:',
-    choices: paths.map(pathOption => ({
+    choices: availablePaths.map(pathOption => ({
       name: `${pathOption.name} (${pathOption.path})`,
       value: pathOption.path,
     })),
