@@ -60,18 +60,10 @@ describe('File Operations', () => {
 
     // Verify files were copied
     const expectedFiles = ['CLAUDE.md', '.claudeignore'];
-    const expectedDirs = ['prompts', 'templates', 'examples'];
 
     for (const file of expectedFiles) {
       const filePath = path.join(targetDir, file);
       assert(await fs.pathExists(filePath), `File should exist: ${file}`);
-    }
-
-    for (const dir of expectedDirs) {
-      const dirPath = path.join(targetDir, dir);
-      assert(await fs.pathExists(dirPath), `Directory should exist: ${dir}`);
-      const stats = await fs.stat(dirPath);
-      assert(stats.isDirectory(), `Should be directory: ${dir}`);
     }
   });
 

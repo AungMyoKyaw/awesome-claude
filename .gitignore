@@ -142,3 +142,6 @@ test/temp-test-dir/
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# macOS system files
+.DS_Store
