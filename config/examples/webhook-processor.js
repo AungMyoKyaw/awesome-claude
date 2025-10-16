@@ -3,7 +3,7 @@
  * Demonstrates Claude configuration in action
  */
 
-import crypto from "crypto";
+import crypto from 'crypto';
 
 export class WebhookProcessor {
   constructor(secret) {
@@ -18,14 +18,11 @@ export class WebhookProcessor {
    */
   verifySignature(payload, signature) {
     const expectedSignature = crypto
-      .createHmac("sha256", this.secret)
+      .createHmac('sha256', this.secret)
       .update(payload)
-      .digest("hex");
+      .digest('hex');
 
-    return crypto.timingSafeEqual(
-      Buffer.from(signature),
-      Buffer.from(expectedSignature)
-    );
+    return crypto.timingSafeEqual(Buffer.from(signature), Buffer.from(expectedSignature));
   }
 
   /**
@@ -37,23 +34,23 @@ export class WebhookProcessor {
     try {
       // Validate event structure
       if (!event.type || !event.data) {
-        throw new Error("Invalid event structure");
+        throw new Error('Invalid event structure');
       }
 
       // Process based on event type
       switch (event.type) {
-        case "user.created":
+        case 'user.created':
           return await this.handleUserCreated(event.data);
-        case "payment.completed":
+        case 'payment.completed':
           return await this.handlePaymentCompleted(event.data);
         default:
-          return { status: "ignored", reason: "Unknown event type" };
+          return { status: 'ignored', reason: 'Unknown event type' };
       }
     } catch (error) {
-      console.error("Webhook processing error:", error);
+      console.error('Webhook processing error:', error);
       return {
-        status: "error",
-        error: error.message
+        status: 'error',
+        error: error.message,
       };
     }
   }
@@ -64,9 +61,9 @@ export class WebhookProcessor {
 
     // Add your business logic here
     return {
-      status: "processed",
-      action: "user_welcome_email_sent",
-      userId: userData.id
+      status: 'processed',
+      action: 'user_welcome_email_sent',
+      userId: userData.id,
     };
   }
 
@@ -76,9 +73,9 @@ export class WebhookProcessor {
 
     // Add your business logic here
     return {
-      status: "processed",
-      action: "payment_confirmation_sent",
-      paymentId: paymentData.id
+      status: 'processed',
+      action: 'payment_confirmation_sent',
+      paymentId: paymentData.id,
     };
   }
 }

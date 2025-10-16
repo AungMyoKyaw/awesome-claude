@@ -11,10 +11,9 @@
 
 export default class AwesomeClaude {
   constructor() {
-    this.name = "awesome-claude";
-    this.version = "0.0.1";
-    this.description =
-      "A curated collection of awesome Claude resources, tools, and examples";
+    this.name = 'awesome-claude';
+    this.version = '0.0.1';
+    this.description = 'A curated collection of awesome Claude resources, tools, and examples';
   }
 
   /**
@@ -26,8 +25,8 @@ export default class AwesomeClaude {
       name: this.name,
       version: this.version,
       description: this.description,
-      author: "Aung Myo Kyaw",
-      license: "MIT"
+      author: 'Aung Myo Kyaw',
+      license: 'MIT',
     };
   }
 
@@ -46,8 +45,8 @@ export const awesomeClaude = new AwesomeClaude();
 // If this file is run directly, display welcome message
 if (import.meta.url === `file://${process.argv[1]}`) {
   console.log(awesomeClaude.welcome());
-  console.log("\n🚀 Getting started with Awesome Claude:");
-  console.log("- Check out the README.md for documentation");
-  console.log("- Run npm run dev for development mode");
-  console.log("- Run npm test to run tests");
+  console.log('\n🚀 Getting started with Awesome Claude:');
+  console.log('- Check out the README.md for documentation');
+  console.log('- Run npm run dev for development mode');
+  console.log('- Run npm test to run tests');
 }
