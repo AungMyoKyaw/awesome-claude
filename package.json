@@ -1,6 +1,6 @@
 {
   "name": "awesome-claude",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "CLI tool to install and manage awesome Claude configurations",
   "main": "index.js",
   "type": "module",
