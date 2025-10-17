@@ -36,11 +36,11 @@ awesome-claude
 npx awesome-claude
 ```
 
-Follow the interactive prompts to:
+### Demo
 
-1. Choose your installation location
-2. Select configuration files to install
-3. Confirm and complete setup
+Here's a preview of the Claude slash commands you'll get after installation:
+
+![Awesome Claude Commands Demo](screenshots/awesome-claude-demo.png)
 
 ## 📋 Installation Options
 
