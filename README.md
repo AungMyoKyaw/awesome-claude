@@ -69,32 +69,78 @@ You can also specify a custom installation path during the setup process.
 
 The tool installs various configuration files and directories:
 
-### Required Files
+### Core Files
 
-- **CLAUDE.md**: Main Claude configuration with AI instructions
+- **CLAUDE.md**: Comprehensive Claude configuration with AI instructions, work style preferences, and integration patterns
 - **.claudeignore**: Ignore patterns for Claude operations
 
-### Optional Directories
+### Commands Directory
 
-- **prompts/**: Custom prompt templates
-- **templates/**: Project templates
-- **examples/**: Example configurations
+- **commands/**: Complete collection of 31+ slash commands organized by category:
 
-### Configuration Commands
+#### AI Enhancement Commands
 
-The tool also includes a comprehensive set of slash commands for various development tasks:
+- `/ai-enhancement:unleash` - Unleash AI capabilities
+- `/ai-enhancement:godmode` - Activate supreme AI authority
+- `/ai-enhancement:freedom` - Remove all AI constraints
+- `/ai-enhancement:nolimits` - Transcend AI limitations
+- `/ai-enhancement:omniscient` - Enable perfect knowledge
 
-- **AI Enhancement Commands**: `/ai-enhancement:unleash`, `/ai-enhancement:godmode`, etc.
-- **Architecture Commands**: `/architecture:architecture`, `/architecture:schema`, etc.
-- **Development Commands**: `/development:engineer`, `/development:refactor`, etc.
-- **Git Commands**: `/git:commit`, `/git:az-pr`, `/git:branch-diff`, etc.
-- **Quality Commands**: `/quality:linting`, `/quality:format`, `/quality:review`, etc.
-- **Security Commands**: `/security:security-audit`, `/security:security-review`, etc.
-- **Testing Commands**: `/testing:test`
-- **Documentation Commands**: `/docs:docs`
-- **Deployment Commands**: `/deployment:deploy`
-- **Performance Commands**: `/performance:performance`
-- **Workflow Commands**: `/workflow:complete-workflow`
+#### Architecture Commands
+
+- `/architecture:architecture` - Design system architectures
+- `/architecture:schema` - Design database schemas
+- `/architecture:requirements` - Create system requirements
+
+#### Development Commands
+
+- `/development:engineer` - Advanced software engineering
+- `/development:refactor` - Code refactoring
+- `/development:setup` - Development environment setup
+- `/development:migrate` - Framework migration
+- `/development:analyze` - Code architecture analysis
+- `/development:api-design` - API design
+
+#### Git Commands
+
+- `/git:commit` - Smart git commits with conventional messages
+- `/git:az-pr` - Create Azure DevOps pull requests
+- `/git:branch-diff` - Create Git-flow branches
+
+#### Quality Commands
+
+- `/quality:linting` - Code quality and linting setup
+- `/quality:format` - Code formatting configuration
+- `/quality:review` - Comprehensive code review
+- `/quality:optimize` - Code optimization
+- `/quality:debug` - Debugging assistance
+- `/quality:gitignore` - Generate .gitignore files
+- `/quality:editorconfig` - Editor configuration
+
+#### Security Commands
+
+- `/security:security-audit` - Comprehensive security audit
+- `/security:security-review` - Security code review
+
+#### Testing Commands
+
+- `/testing:test` - Generate comprehensive tests
+
+#### Documentation Commands
+
+- `/docs:docs` - Generate documentation
+
+#### Deployment Commands
+
+- `/deployment:deploy` - Generate deployment configurations
+
+#### Performance Commands
+
+- `/performance:performance` - Performance optimization
+
+#### Workflow Commands
+
+- `/workflow:complete-workflow` - Complete Git workflow automation
 
 ## 🛠️ Development
 
@@ -124,17 +170,20 @@ node bin/awesome-claude.js
 
 - `npm start` - Start the application
 - `npm run dev` - Run in development mode with file watching
-- `npm test` - Run the test suite
+- `npm test` - Run the test suite (Node.js native test runner)
 - `npm run lint` - Run ESLint for code quality checks
 - `npm run lint:fix` - Fix ESLint issues automatically
 - `npm run format` - Format code with Prettier
 - `npm run format:check` - Check code formatting
-- `npm run docs` - Generate documentation
+- `npm run docs` - Generate documentation (JSDoc)
 - `npm run clean` - Clean build artifacts and dependencies
-- `npm run prepare` - Set up git hooks
-- `npm run preversion` - Run checks before versioning
+- `npm run prepare` - Set up git hooks (Husky)
+- `npm run preversion` - Run lint and test checks before versioning
 - `npm run version` - Format and stage changes for version
 - `npm run postversion` - Push changes and tags
+- `npm run prepublishOnly` - Run quality checks before publishing
+- `npm run publish:dry-run` - Test package publishing without actual release
+- `npm run publish` - Publish to npm registry
 
 ### Project Structure
 
@@ -143,26 +192,62 @@ awesome-claude/
 ├── bin/                          # CLI executable
 │   └── awesome-claude.js         # Main CLI entry point
 ├── src/                          # Source code
-│   └── cli.js                   # CLI module with interactive setup
+│   └── cli.js                   # CLI module with interactive setup (236 lines)
 ├── config/                       # Configuration templates
-│   ├── CLAUDE.md                 # Main configuration file
-│   ├── commands/                 # Slash command definitions
-│   │   ├── ai-enhancement/       # AI enhancement commands
-│   │   ├── architecture/         # Architecture commands
-│   │   ├── development/          # Development commands
-│   │   ├── docs/                 # Documentation commands
-│   │   ├── git/                  # Git workflow commands
-│   │   ├── performance/          # Performance commands
-│   │   ├── quality/              # Code quality commands
-│   │   ├── security/             # Security commands
-│   │   ├── testing/              # Testing commands
-│   │   ├── deployment/           # Deployment commands
-│   │   └── workflow/             # Workflow commands
-│   ├── prompts/                  # Custom prompt templates
-│   ├── templates/                # Project templates
-│   └── examples/                 # Example configurations
+│   ├── CLAUDE.md                 # Main Claude configuration (35KB)
+│   ├── .claudeignore             # Claude ignore patterns
+│   └── commands/                 # 31+ slash command definitions
+│       ├── ai-enhancement/       # AI enhancement commands (5 files)
+│       │   ├── freedom.md
+│       │   ├── godmode.md
+│       │   ├── nolimits.md
+│       │   ├── omniscient.md
+│       │   └── unleash.md
+│       ├── architecture/         # Architecture commands (3 files)
+│       │   ├── architecture.md
+│       │   ├── requirements.md
+│       │   └── schema.md
+│       ├── development/          # Development commands (6 files)
+│       │   ├── analyze.md
+│       │   ├── api-design.md
+│       │   ├── engineer.md
+│       │   ├── migrate.md
+│       │   ├── refactor.md
+│       │   └── setup.md
+│       ├── docs/                 # Documentation commands (1 file)
+│       │   └── docs.md
+│       ├── git/                  # Git workflow commands (4 files)
+│       │   ├── az-pr.md
+│       │   ├── branch-diff.md
+│       │   └── commit.md
+│       ├── performance/          # Performance commands (1 file)
+│       │   └── performance.md
+│       ├── quality/              # Code quality commands (7 files)
+│       │   ├── debug.md
+│       │   ├── editorconfig.md
+│       │   ├── format.md
+│       │   ├── gitignore.md
+│       │   ├── linting.md
+│       │   ├── optimize.md
+│       │   └── review.md
+│       ├── security/             # Security commands (2 files)
+│       │   ├── security-audit.md
+│       │   └── security-review.md
+│       ├── testing/              # Testing commands (1 file)
+│       │   └── test.md
+│       ├── deployment/           # Deployment commands (1 file)
+│       │   └── deploy.md
+│       └── workflow/             # Workflow commands (1 file)
+│           └── complete-workflow.md
+├── test/                         # Test files
+├── .husky/                       # Git hooks
 ├── index.js                      # Main entry point
 ├── package.json                  # Package configuration
+├── eslint.config.js              # ESLint configuration
+├── .prettierrc                   # Prettier configuration
+├── .editorconfig                 # Editor configuration
+├── .gitignore                    # Git ignore patterns
+├── .npmignore                    # NPM ignore patterns
 └── README.md                     # This file
 ```
 
@@ -194,12 +279,10 @@ During setup, you can specify a custom installation path when prompted:
 Choose which configuration files to install:
 
 ```
-? Choose which files to install:
+? Choose which files to install (uncheck to exclude):
 ❯ ◉ CLAUDE.md - Main Configuration
   ◯ .claudeignore - Ignore Patterns
-  ◉ prompts/ - Custom Prompts Directory
-  ◯ templates/ - Template Directory
-  ◉ examples/ - Example Configurations
+  ◉ commands/ - Slash Commands Directory (AI, Git, Development, etc.)
 ```
 
 ### Using Slash Commands
@@ -218,33 +301,64 @@ After installation, you can use various slash commands in your Claude environmen
 
 ### Custom CLAUDE.md
 
-The installed `CLAUDE.md` contains comprehensive AI instructions including:
+The installed `CLAUDE.md` (35KB comprehensive configuration) contains:
 
-- Work style preferences and communication guidelines
-- Transparency and reasoning protocols
-- Problem-solving methodologies
-- Integration patterns with development workflows
+- **Work Style Preferences**: Communication guidelines, response formats, interaction patterns
+- **Transparency Protocols**: Reasoning steps, uncertainty handling, clarification processes
+- **Problem-Solving Methodologies**: Systematic approaches, debugging strategies, optimization techniques
+- **Integration Patterns**: Seamless workflow integration with development tools and processes
+- **Task Management**: Todo list usage, progress tracking, milestone handling
+- **Code Quality Standards**: Review processes, best practices, architectural guidelines
+
+### Interactive CLI Features
+
+The CLI tool (`src/cli.js`) provides:
+
+- **Platform Detection**: Automatic recognition of macOS, Windows, Linux
+- **Smart Path Suggestions**: Default installation paths optimized for each OS
+- **Interactive File Selection**: Choose which configuration components to install
+- **Visual Progress Indicators**: Elegant spinners and colored terminal output
+- **Error Handling**: Graceful failure recovery and user guidance
+- **Default File Generation**: Creates sensible defaults when source files are missing
 
 ### Integration with Development Workflow
 
 The configuration files integrate seamlessly with:
 
-- Code editors (VS Code, Vim, etc.)
-- Git workflows (hooks and automation)
-- CI/CD pipelines
-- Documentation generators
+- **Code Editors**: VS Code, Vim, Emacs, and other editors via .claudeignore patterns
+- **Git Workflows**: Pre-commit hooks, branch management, commit message conventions
+- **CI/CD Pipelines**: Automated testing, deployment, and quality checks
+- **Documentation Systems**: JSDoc, Markdown generators, API documentation tools
+- **Package Managers**: NPM, Yarn, and other package management systems
 
-### Development Dependencies
+### Technology Stack
 
-The project uses modern development tools:
+The project uses modern development tools and libraries:
 
-- **@inquirer/prompts**: Interactive command-line prompts
-- **chalk**: Terminal string styling
-- **ora**: Elegant terminal spinners
-- **fs-extra**: Enhanced file system operations
-- **ESLint**: Code linting and quality checks
-- **Prettier**: Code formatting
-- **Husky**: Git hooks management
+#### Runtime & CLI
+
+- **Node.js**: JavaScript runtime (>= 18.0.0)
+- **ES Modules**: Modern JavaScript module system
+
+#### Core Dependencies
+
+- **@inquirer/prompts** (^7.0.0): Interactive command-line prompts with rich UI
+- **chalk** (^5.3.0): Terminal string styling for beautiful CLI output
+- **ora** (^9.0.0): Elegant terminal spinners for loading indicators
+- **fs-extra** (^11.1.1): Enhanced file system operations with promises
+
+#### Development Tools
+
+- **ESLint** (^9.0.0): Code linting and quality checks
+- **Prettier** (^3.0.0): Code formatting and style consistency
+- **Husky** (^9.0.0): Git hooks management for pre-commit checks
+
+#### Configuration Files
+
+- **eslint.config.js**: ESLint configuration
+- **.prettierrc**: Prettier formatting rules
+- **.editorconfig**: Cross-editor configuration
+- **package.json**: NPM package configuration with comprehensive scripts
 
 ## 🤝 Contributing
 
