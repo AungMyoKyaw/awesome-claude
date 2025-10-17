@@ -20,7 +20,10 @@
     "prepare": "husky",
     "preversion": "npm run lint && npm run test",
     "version": "npm run format && git add -A",
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags",
+    "prepublishOnly": "npm run lint && npm run test",
+    "publish:dry-run": "npm pack --dry-run",
+    "publish": "npm publish"
   },
   "repository": {
     "type": "git",
