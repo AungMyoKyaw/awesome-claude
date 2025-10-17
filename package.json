@@ -53,6 +53,7 @@
   "homepage": "https://github.com/AungMyoKyaw/awesome-claude#readme",
   "files": [
     "src/",
+    "config/",
     "docs/",
     "README.md",
     "LICENSE"
