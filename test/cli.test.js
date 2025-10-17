@@ -32,11 +32,7 @@ describe('Platform Detection', () => {
 
 describe('Configuration Paths', () => {
   test('should create valid configuration paths', async () => {
-    const testPaths = [
-      path.join(testDir, '.claude'),
-      path.join(testDir, 'config', 'claude'),
-      path.join(testDir, 'local', 'share', 'claude'),
-    ];
+    const testPaths = [path.join(testDir, '.claude')];
 
     for (const testPath of testPaths) {
       await fs.ensureDir(testPath);
@@ -50,7 +46,7 @@ describe('Configuration Paths', () => {
 describe('File Operations', () => {
   test('should copy configuration files', async () => {
     const sourceConfigDir = path.join(__dirname, '..', 'config');
-    const targetDir = path.join(testDir, 'claude-config');
+    const targetDir = path.join(testDir, '.claude');
 
     // Ensure source config directory exists
     assert(await fs.pathExists(sourceConfigDir), 'Source config directory should exist');
@@ -60,10 +56,18 @@ describe('File Operations', () => {
 
     // Verify files were copied
     const expectedFiles = ['CLAUDE.md', '.claudeignore'];
+    const expectedDirs = ['commands'];
 
     for (const file of expectedFiles) {
       const filePath = path.join(targetDir, file);
       assert(await fs.pathExists(filePath), `File should exist: ${file}`);
+    }
+
+    for (const dir of expectedDirs) {
+      const dirPath = path.join(targetDir, dir);
+      assert(await fs.pathExists(dirPath), `Directory should exist: ${dir}`);
+      const stats = await fs.stat(dirPath);
+      assert(stats.isDirectory(), `Should be directory: ${dir}`);
     }
   });
 
@@ -137,6 +141,39 @@ describe('Configuration Validation', () => {
     assert(content.includes('node_modules/'), 'Should ignore node_modules');
     assert(content.includes('.env'), 'Should ignore env files');
     assert(content.includes('*.log'), 'Should ignore log files');
+  });
+
+  test('should validate commands directory structure', async () => {
+    const commandsDir = path.join(__dirname, '..', 'config', 'commands');
+
+    assert(await fs.pathExists(commandsDir), 'Commands directory should exist');
+
+    const expectedSubdirs = [
+      'ai-enhancement',
+      'architecture',
+      'development',
+      'docs',
+      'git',
+      'performance',
+      'quality',
+      'security',
+      'testing',
+      'deployment',
+      'workflow',
+    ];
+
+    for (const subdir of expectedSubdirs) {
+      const subdirPath = path.join(commandsDir, subdir);
+      assert(await fs.pathExists(subdirPath), `Commands subdirectory should exist: ${subdir}`);
+      const stats = await fs.stat(subdirPath);
+      assert(stats.isDirectory(), `Should be directory: ${subdir}`);
+    }
+
+    // Check that subdirectories contain markdown files
+    const aiEnhancementDir = path.join(commandsDir, 'ai-enhancement');
+    const files = await fs.readdir(aiEnhancementDir);
+    const markdownFiles = files.filter(file => file.endsWith('.md'));
+    assert(markdownFiles.length > 0, 'AI enhancement directory should contain markdown files');
   });
 });
 

@@ -17,7 +17,7 @@ const CONFIG_PATHS = {
       path: path.join(homedir(), '.claude'),
       disabled: true,
     },
-    { name: 'Current Working Directory: ./claude', path: path.join(process.cwd(), 'claude') },
+    { name: 'Current Working Directory: ./.claude', path: path.join(process.cwd(), '.claude') },
   ],
   windows: [
     {
@@ -25,7 +25,7 @@ const CONFIG_PATHS = {
       path: path.join(homedir(), '.claude'),
       disabled: true,
     },
-    { name: 'Current Working Directory: ./claude', path: path.join(process.cwd(), 'claude') },
+    { name: 'Current Working Directory: ./.claude', path: path.join(process.cwd(), '.claude') },
   ],
   linux: [
     {
@@ -33,33 +33,21 @@ const CONFIG_PATHS = {
       path: path.join(homedir(), '.claude'),
       disabled: true,
     },
-    { name: 'Current Working Directory: ./claude', path: path.join(process.cwd(), 'claude') },
+    { name: 'Current Working Directory: ./.claude', path: path.join(process.cwd(), '.claude') },
   ],
 };
 
 // Configuration files to install
 const CONFIG_FILES = [
-  { name: 'CLAUDE.md - Main Configuration', file: 'CLAUDE.md', required: true },
+  { name: 'CLAUDE.md - Main Configuration', file: 'CLAUDE.md', required: false },
   {
     name: '.claudeignore - Ignore Patterns',
     file: '.claudeignore',
     required: false,
   },
   {
-    name: 'prompts/ - Custom Prompts Directory',
-    file: 'prompts',
-    required: false,
-    isDirectory: true,
-  },
-  {
-    name: 'templates/ - Template Directory',
-    file: 'templates',
-    required: false,
-    isDirectory: true,
-  },
-  {
-    name: 'examples/ - Example Configurations',
-    file: 'examples',
+    name: 'commands/ - Slash Commands Directory (AI, Git, Development, etc.)',
+    file: 'commands',
     required: false,
     isDirectory: true,
   },
@@ -75,7 +63,7 @@ export async function setupClaudeConfig() {
 
     console.log(chalk.gray('\n📋 Installation Options:'));
     console.log(chalk.gray('  • User Home Directory (system) - Currently disabled'));
-    console.log(chalk.green('  • Current Working Directory: ./claude - Available\n'));
+    console.log(chalk.green('  • Current Working Directory: ./.claude - Available\n'));
 
     const installPath = await selectInstallationPath(platform);
 
@@ -84,11 +72,11 @@ export async function setupClaudeConfig() {
     // Step 2: Select configuration files
     console.log(chalk.yellow('\n📋 Select configuration files to install:'));
     const selectedFiles = await checkbox({
-      message: 'Choose which files to install:',
+      message: 'Choose which files to install (uncheck to exclude):',
       choices: CONFIG_FILES.map(file => ({
         name: file.name,
         value: file,
-        checked: file.required,
+        checked: true, // Select all files by default
       })),
     });
 

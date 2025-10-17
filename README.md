@@ -48,17 +48,17 @@ The tool supports multiple installation locations based on your operating system
 
 ### macOS
 
-- Current Working Directory (`./claude`) - Available
+- Current Working Directory (`./.claude`) - Available
 - User Home Directory (`~/.claude`) - Currently disabled
 
 ### Windows
 
-- Current Working Directory (`./claude`) - Available
+- Current Working Directory (`./.claude`) - Available
 - User Home Directory (`~/.claude`) - Currently disabled
 
 ### Linux
 
-- Current Working Directory (`./claude`) - Available
+- Current Working Directory (`./.claude`) - Available
 - User Home Directory (`~/.claude`) - Currently disabled
 
 ### Custom Path
@@ -185,7 +185,7 @@ During setup, you can specify a custom installation path when prompted:
 
 ```
 ? Select installation location:
-❯ Current Working Directory: ./claude (./claude)
+❯ Current Working Directory: ./.claude (./.claude)
   User Home Directory: ~/.claude (system) - Currently disabled
 ```
 
